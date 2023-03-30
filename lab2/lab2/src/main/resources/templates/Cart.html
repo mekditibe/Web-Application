@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<div id="header"><h2>My Shopping Cart</h2></div>
+<table class="datatable" border="1">
+    <tr>
+        <th>Quantity</th>
+        <th>Product Number</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="cartList,iterator : ${cartList}" with="totalPrice=0">
+        <td th:text="${cartList.quantity}">quantity</td>
+        <td th:text="${cartList.Product.prNumber}">prNumber</td>
+        <td th:text="${cartList.Product.name}">name</td>
+        <td th:text="${cartList.Product.price}">price</td>
+        <td th:text="${cartList.total}">total</td>
+        <td>
+            <form action="removecart" method="post">
+                <button type="submit" name="prNumber" th:value="${cartList.Product.prNumber}">Remove</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<div>
+    <p>Total:</p>
+    <p th:text="${sumTotal}"/>
+</div>
+
+<form action="/products" method="Get">
+    <button type="submit">Show Product</button>
+</form>
+</body>
+</html>

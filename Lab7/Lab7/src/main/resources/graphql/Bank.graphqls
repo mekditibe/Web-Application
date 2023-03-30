@@ -1,0 +1,15 @@
+type Bank {
+accountNumber : Int!
+accountHolder: String!
+balance: Double!
+date: LocalDate!
+}
+
+type Query {
+getBanks():[Bank]
+getBankByID(accountNumber: Int!):Bank
+}
+
+type Mutation {
+createBankAccount(accountNumber: Int!, accountHolder: String!):Bank
+}

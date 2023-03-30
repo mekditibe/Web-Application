@@ -1,0 +1,15 @@
+type Book {
+isbn : String!
+author: String!
+title: String!
+price: Double!
+}
+
+type Query {
+getBooks():[Book]
+getBookByID(isbn: String!):Book
+}
+
+type Mutation {
+createBook(book: Book!):Book
+}
